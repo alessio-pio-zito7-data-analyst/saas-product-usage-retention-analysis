@@ -143,18 +143,6 @@ The SQL analysis identified several notable patterns before dashboard developmen
 
 # Technical Implementation
 
-## Data Model
-
-A Star Schema data model was designed to support KPI calculation, trend analysis, customer segmentation, and dashboard performance.
-
-The model separates business events (facts) from descriptive attributes (dimensions), following common Business Intelligence modelling practices.
-
-## Star Schema
-
-The analytical model consists of two fact tables and three dimension tables designed to support product usage, retention, churn, and time-series analysis.
-
-![Star Schema](Star_Schema.png)
-
 ## Data Quality & Validation
 
 Before building the analytical model and calculating KPIs, the dataset underwent a structured data ingestion, debugging, and validation process.
@@ -186,7 +174,12 @@ These issues would have compromised:
 
 The raw SaaS dataset was imported into MySQL and validated before analytical modelling.
 
-![Data Ingestion Example](Data_Ingestion_Debug_and_Validation/Data_Ingestion_Example_Screenshot.png)
+## Data Model Schema
+
+Final relational dataset model created after the cleaning and restructuring process using Excel and MySQL.
+The dataset model was created in Power BI.
+
+![Data Model Schema](Data_Modelling/Data_Model_Overview.png)
 
 Documented activities included:
 
@@ -198,10 +191,26 @@ Documented activities included:
 - Business logic validation
 - Data debugging and correction of identified issues
 
+## SQL Data Ingestion Screenshot Sample 
+
+![Data Ingestion Example](Data_Ingestion_Debug_and_Validation/Data_Ingestion_Example_Screenshot.png)
+
 **Supporting Documentation**
 
 - [Full Data Ingestion SQL](Data_Ingestion_Debug_and_Validation/Data_Ingestion.sql)
 - [Full Debugging & Data Validation SQL](Data_Ingestion_Debug_and_Validation/Debugging_&_Data_Validation.sql)
+
+## Data Model
+
+A Star Schema data model was designed to support KPI calculation, trend analysis, customer segmentation, and dashboard performance.
+
+The model separates business events (facts) from descriptive attributes (dimensions), following common Business Intelligence modelling practices.
+
+## Star Schema
+
+The analytical model consists of two fact tables and three dimension tables designed to support product usage, retention, churn, and time-series analysis.
+
+![Star Schema](Star_Schema.png)
 
 ### Relationship Validation
 
@@ -240,4 +249,30 @@ Before SQL development, the calculation logic for each KPI was documented, inclu
 | Churn Rate By Feature | Churned Accounts Using Feature / Total Accounts Using Feature | fact_feature_usage, dim_subscriptions, dim_accounts, fact_churn_events |
 | Feature Adoption Rate | Accounts Using Feature / Total Active Accounts | fact_feature_usage, dim_subscriptions, dim_accounts |
 
+## SQL Development
+
+SQL was used throughout the project to:
+
+- Create fact and dimension views
+- Validate data quality and relationships
+- Calculate KPI metrics
+- Generate analytical datasets for Power BI
+
+Each KPI was initially developed as a standalone SQL query to validate the calculation logic and answer the corresponding business question.
+
+Where relevant, KPI calculations were structured to support year-over-year and time-series analysis for the 2023–2024 period. Other KPIs were intentionally aggregated across the full analysis period (both 2023 and 2024) to align with the dashboard design and business reporting requirements.
+
+Once validated, the KPI queries were converted into SQL views and used as the primary data source for Power BI reporting.
+
+This approach centralized business logic within the database layer, reducing the need for complex Power BI calculations while improving model simplicity, maintainability, and performance.
+
+**Supporting SQL KPI Calculation Script**
+
+- [SQL Script](SQL_Scripts/KPIs_Calculation_MySQL.sql)
+
+## Example KPI Output
+
+The example below shows the SQL output used to calculate Retention Rate and Churn Rate by Feature for 2023 and 2024.
+
+![Retention and Churn Rate by Feature](SQL_Scripts/Output_Example_Churn_Retention_By_Feature_Screenshot.png)
 

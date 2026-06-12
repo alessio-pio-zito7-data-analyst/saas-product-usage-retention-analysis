@@ -20,7 +20,9 @@ The analysis followed a structured Business Intelligence workflow:
 
 Business Context → Data Modeling → Data Validation → Business Questions → KPI Definition → KPI Logic → SQL Development → Dashboard Design
 
-Supporting documentation is available in the repository: Name repository 
+Supporting documentation is available in the repository:
+
+- [Business Questions and KPI Definition](Business_Questions_and_KPIs_Definition/)
 
 ## Dashboard Preview
 
@@ -28,11 +30,11 @@ Supporting documentation is available in the repository: Name repository
 
 ## Key Findings
 
-1) Feature adoption remained consistently high across all major product features.
+- Feature adoption remained consistently high across all major product features.
 
-2) Customer retention remained low despite strong feature usage and engagement.
+- Customer retention remained low despite strong feature usage and engagement.
 
-3) Product usage alone does not appear to explain customer churn, suggesting that additional customer-level factors should be investigated.
+- Product usage alone does not appear to fully explain customer retention and churn outcomes, suggesting that additional customer-level factors should be investigated.
 
 ## Skills Demonstrated
 
@@ -42,3 +44,97 @@ Supporting documentation is available in the repository: Name repository
 - KPI Design
 - Product Analytics
 - Data Storytelling
+
+# Business Understanding
+
+## Stakeholder
+
+Product Manager
+
+## Stakeholder Goal
+
+Understand how customers interact with product features and identify whether specific usage patterns are associated with retention or churn.
+
+## Business Questions & KPI Framework 
+
+### Which product features drive the highest user engagement?
+
+**KPIs**
+
+- Total Feature Usage
+- Total Usage Duration Mins
+
+**Business Purpose**
+
+Measures feature engagement.
+
+### How frequently are product features used?
+
+**KPI**
+
+- Feature Usage Frequency | can be calculated Daily, Weekly, Monthly, Yearly
+
+**Business Purpose**
+
+Measures how often features are used in a specific time window.
+
+### How much time do users spend using each feature?
+
+**KPIs**
+
+- Total Usage Duration Mins 
+- Average Usage Duration Mins 
+- Average Usage Count 
+
+**Business Purpose**
+
+Measures time spent using each feature.
+
+### Which features are associated with higher customer retention?
+
+**KPI**
+
+- Retention Rate By Feature
+
+**Business Purpose**
+
+Measures how many accounts did not cancel.
+
+### Which features are associated with higher customer churn?
+
+**KPI**
+
+- Churn Rate By Feature
+
+**Business Purpose**
+
+Measures how many accounts did cancel.
+
+### Which features show low adoption and may require improvement?
+
+**KPIs**
+
+- Feature Adoption Rate
+- Total Feature Usage
+
+**Business Purpose**
+
+Measures how many accounts are effectively using a feature.
+
+## Analytical Findings
+
+Supporting Queries Script is available here:
+
+- [KPIs Calculation MySQL](SQL_Scripts/KPIs_Calculation_MySQL.sql)
+
+The SQL analysis identified several notable patterns before dashboard development:
+
+- Feature adoption remained consistently high across all product features, ranging between 72% and 82%.
+
+- Feature usage was relatively balanced across the product portfolio, with no feature showing critically low engagement.
+
+- The most frequently used features also generated the highest total usage duration, indicating sustained engagement rather than occasional interactions.
+
+- Retention rates remained relatively similar across all features, suggesting that no individual feature emerged as a clear retention driver.
+
+- Churn and retention patterns indicate that additional variables such as customer characteristics, subscription plans, industry segments, or churn reasons should be investigated in future analyses.

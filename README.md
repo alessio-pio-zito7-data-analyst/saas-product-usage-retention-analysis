@@ -329,7 +329,7 @@ The example below uses the `LAG()` window function to compare yearly feature eng
 
 **Supporting Documentation**
 
-- [Advanced SQL Analysis](sql_Advanced_Analysis/MySQL_Advanced_Analysis.sql)
+- [Advanced SQL Analysis](Sql_Advanced_Analysis/MySQL_Advanced_Analysis.sql)
 
 ## Conclusion
 
